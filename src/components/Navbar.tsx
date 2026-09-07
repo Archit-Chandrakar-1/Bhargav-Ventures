@@ -39,7 +39,7 @@ function navLinkClassName({ isActive }: { isActive: boolean }) {
     'relative py-2 text-sm transition-colors hover:text-brand-gold',
     isActive
       ? "text-brand-gold after:absolute after:-bottom-px after:left-0 after:h-px after:w-full after:bg-brand-gold"
-      : 'text-brand-ivory/90',
+      : 'text-brand-ivory-muted',
   )
 }
 
@@ -56,7 +56,7 @@ export default function Navbar() {
             />
           </span>
           <span className="flex flex-col leading-none">
-            <span className="font-heading text-lg text-brand-ivory">Bhargava&apos;s</span>
+            <span className="font-heading text-lg text-brand-ivory">BHARGAVA&apos;S</span>
             <span className="text-[11px] tracking-[0.25em] text-brand-gold">VENTURE</span>
           </span>
         </Link>
@@ -69,7 +69,7 @@ export default function Navbar() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="h-auto bg-transparent p-0 py-2 text-sm font-normal text-brand-ivory/90 hover:bg-transparent hover:text-brand-gold focus:bg-transparent data-open:bg-transparent data-open:text-brand-gold data-open:hover:bg-transparent data-popup-open:bg-transparent data-popup-open:hover:bg-transparent">
+                <NavigationMenuTrigger className="h-auto bg-transparent p-0 py-2 text-sm font-normal text-brand-ivory-muted hover:bg-transparent hover:text-brand-gold focus:bg-transparent data-open:bg-transparent data-open:text-brand-gold data-open:hover:bg-transparent data-popup-open:bg-transparent data-popup-open:hover:bg-transparent">
                   Our Brands
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-transparent p-0">
@@ -135,7 +135,7 @@ export default function Navbar() {
           <SheetContent className="flex flex-col gap-0 border-brand-gold/20 bg-brand-charcoal text-brand-ivory">
             <SheetHeader>
               <SheetTitle className="font-heading text-brand-ivory">
-                Bhargava&apos;s Venture
+                BHARGAVA&apos;S VENTURE
               </SheetTitle>
             </SheetHeader>
 
@@ -143,7 +143,7 @@ export default function Navbar() {
               <SheetClose
                 render={<Link to="/" />}
                 nativeButton={false}
-                className="rounded-md px-2 py-2.5 text-sm text-brand-ivory/90 hover:bg-brand-ivory/10"
+                className="rounded-md px-2 py-2.5 text-sm text-brand-ivory-muted hover:bg-brand-ivory/10"
               >
                 Home
               </SheetClose>
@@ -156,7 +156,7 @@ export default function Navbar() {
                   key={brand.slug}
                   render={<Link to={`/brands/${brand.slug}`} />}
                   nativeButton={false}
-                  className="rounded-md px-2 py-2.5 text-sm text-brand-ivory/90 hover:bg-brand-ivory/10"
+                  className="rounded-md px-2 py-2.5 text-sm text-brand-ivory-muted hover:bg-brand-ivory/10"
                 >
                   {brand.name}
                 </SheetClose>
@@ -169,7 +169,7 @@ export default function Navbar() {
                   key={link.href}
                   render={<Link to={link.href} />}
                   nativeButton={false}
-                  className="rounded-md px-2 py-2.5 text-sm text-brand-ivory/90 hover:bg-brand-ivory/10"
+                  className="rounded-md px-2 py-2.5 text-sm text-brand-ivory-muted hover:bg-brand-ivory/10"
                 >
                   {link.label}
                 </SheetClose>
