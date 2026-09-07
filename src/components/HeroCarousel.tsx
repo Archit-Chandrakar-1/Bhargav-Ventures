@@ -17,6 +17,7 @@ interface HeroSlide {
   paragraph: string
   primaryCta: { label: string; href: string }
   secondaryCta: { label: string; href: string }
+  image?: string
 }
 
 const slides: HeroSlide[] = [
@@ -28,6 +29,7 @@ const slides: HeroSlide[] = [
       'Placeholder copy — Bhargava’s Venture builds and grows distinctive food brands across India. Real slide content to follow.',
     primaryCta: { label: 'Explore Our Brands', href: '/our-brands' },
     secondaryCta: { label: 'Our Story', href: '/about' },
+    image: '/assets/Carousel-1.png',
   },
   {
     eyebrow: 'Placeholder slide 2',
@@ -165,12 +167,23 @@ export default function HeroCarousel() {
                     </div>
                   </div>
 
-                  <div className="flex aspect-4/3 items-center justify-center rounded-2xl border border-brand-gold/15 bg-brand-forest/40 lg:aspect-square">
-                    <div className="flex flex-col items-center gap-2 text-brand-ivory-muted">
-                      <ImageIcon className="h-8 w-8" />
-                      <span className="text-xs">Slide image placeholder</span>
+                  {slide.image ? (
+                    <div className="relative aspect-4/3 overflow-hidden rounded-2xl border border-brand-gold/15">
+                      <img
+                        src={slide.image}
+                        alt=""
+                        className="h-full w-full object-cover object-[75%_center]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/50 via-transparent to-brand-charcoal/20" />
                     </div>
-                  </div>
+                  ) : (
+                    <div className="flex aspect-4/3 items-center justify-center rounded-2xl border border-brand-gold/15 bg-brand-forest/40 lg:aspect-square">
+                      <div className="flex flex-col items-center gap-2 text-brand-ivory-muted">
+                        <ImageIcon className="h-8 w-8" />
+                        <span className="text-xs">Slide image placeholder</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </CarouselItem>
             ))}
