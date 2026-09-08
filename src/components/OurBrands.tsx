@@ -10,6 +10,7 @@ interface Brand {
   cardClassName: string
   taglineClassName: string
   buttonClassName: string
+  logoClassName?: string
 }
 
 const brands: Brand[] = [
@@ -30,6 +31,7 @@ const brands: Brand[] = [
     cardClassName: 'bg-[#FFC93C]',
     taglineClassName: 'text-[#1A1A1A]',
     buttonClassName: 'bg-[#1A1A1A] text-[#FFC93C] hover:bg-[#1A1A1A]/90',
+    logoClassName: 'scale-[1.3]',
   },
   {
     name: 'Cafe Cochin',
@@ -84,7 +86,7 @@ export default function OurBrands() {
                 <img
                   src={brand.logo}
                   alt={brand.name}
-                  className="h-full max-h-full w-full object-contain"
+                  className={`h-full max-h-full w-full object-contain ${brand.logoClassName ?? ''}`}
                 />
               </div>
 
