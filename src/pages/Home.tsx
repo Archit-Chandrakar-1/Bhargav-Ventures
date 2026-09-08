@@ -1,9 +1,9 @@
-import HeroCarousel from '@/components/HeroCarousel'
+import Hero from '@/components/Hero'
 
 export default function Home() {
   return (
     <main>
-      <HeroCarousel />
+      <Hero />
     </main>
   )
 }
