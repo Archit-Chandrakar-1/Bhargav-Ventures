@@ -37,16 +37,20 @@ export default function Hero() {
       <div className="relative flex aspect-4/3 items-center sm:aspect-video lg:aspect-auto lg:min-h-[calc(100svh-5rem)]">
         {heroContent.video ? (
           <>
-            <video
-              src={heroContent.video}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="absolute inset-0 h-full w-full object-cover object-[70%_55%]"
-            />
+            <div className="absolute inset-0 overflow-hidden">
+              <video
+                src={heroContent.video}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="h-full w-full scale-[1.08] object-cover object-[70%_55%]"
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-r from-brand-charcoal via-brand-charcoal/70 to-brand-charcoal/10" />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/80 via-transparent to-transparent" />
+            {/* Corner scrim: hides the source video's watermark, which sits in this corner */}
+            <div className="absolute right-0 bottom-0 h-28 w-48 bg-gradient-to-tl from-brand-charcoal via-brand-charcoal/60 to-transparent sm:h-36 sm:w-64" />
           </>
         ) : heroContent.image ? (
           <>
