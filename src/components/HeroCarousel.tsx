@@ -18,6 +18,7 @@ interface HeroSlide {
   primaryCta: { label: string; href: string }
   secondaryCta: { label: string; href: string }
   image?: string
+  video?: string
 }
 
 const slides: HeroSlide[] = [
@@ -29,7 +30,8 @@ const slides: HeroSlide[] = [
       'Placeholder copy — Bhargava’s Venture builds and grows distinctive food brands across India. Real slide content to follow.',
     primaryCta: { label: 'Explore Our Brands', href: '/our-brands' },
     secondaryCta: { label: 'Our Story', href: '/about' },
-    image: '/assets/Carousel-1.png',
+    // image: '/assets/Carousel-1.png',
+    video: '/assets/Carousel.mp4',
   },
   {
     eyebrow: 'Placeholder slide 2',
@@ -122,13 +124,26 @@ export default function HeroCarousel() {
           {slides.map((slide) => (
             <CarouselItem key={slide.eyebrow} className="pl-0">
               <div className="relative flex aspect-4/3 items-center sm:aspect-video lg:aspect-auto lg:min-h-[calc(100svh-5rem)]">
-                {slide.image ? (
+                {slide.video ? (
                   <>
-                    <img
+                    <video
+                      src={slide.video}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="absolute inset-0 h-full w-full object-cover object-[70%_55%]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-brand-charcoal via-brand-charcoal/70 to-brand-charcoal/10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/80 via-transparent to-transparent" />
+                  </>
+                ) : slide.image ? (
+                  <>
+                    {/* <img
                       src={slide.image}
                       alt=""
                       className="absolute inset-0 h-full w-full object-cover object-[70%_55%]"
-                    />
+                    /> */}
                     <div className="absolute inset-0 bg-gradient-to-r from-brand-charcoal via-brand-charcoal/70 to-brand-charcoal/10" />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/80 via-transparent to-transparent" />
                   </>
