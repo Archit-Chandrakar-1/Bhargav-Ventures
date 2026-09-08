@@ -1,3 +1,4 @@
+import Compliance from '@/components/Compliance'
 import Hero from '@/components/Hero'
 import OurBrands from '@/components/OurBrands'
 
@@ -6,6 +7,7 @@ export default function Home() {
     <main>
       <Hero />
       <OurBrands />
+      <Compliance />
     </main>
   )
 }
