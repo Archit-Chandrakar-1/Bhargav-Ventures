@@ -19,6 +19,38 @@
     --color-brand-ivory-muted: var(--brand-ivory-muted);
     --color-brand-gold: var(--brand-gold);
     --color-brand-terracotta: var(--brand-terracotta);
+
+    /* Samosa King sub-brand palette (values scoped under .samosa-king) */
+    --color-gold: var(--gold);
+    --color-crust: var(--crust);
+    --color-cream: var(--cream);
+    --color-chutney: var(--chutney);
+    --color-ink: var(--ink);
+
+    /* Andey Ki Duniya sub-brand palette (values scoped under .andey-ki-duniya) */
+    --color-brand: var(--brand);
+    --color-brand-strong: var(--brand-strong);
+    --color-brand-foreground: var(--brand-foreground);
+    --color-ink-foreground: var(--ink-foreground);
+    --color-eggshell: var(--eggshell);
+    --color-yolk-soft: var(--yolk-soft);
+    --font-display: 'Baloo 2', 'DM Sans', system-ui, sans-serif;
+    --shadow-brand: 0 14px 30px color-mix(in oklab, var(--brand) 30%, transparent);
+
+    /* Doodhwala sub-brand palette (values scoped under .doodhwala) */
+    --color-accent-soft: var(--accent-soft);
+    --shadow-hero: 0 28px 70px color-mix(in oklab, var(--foreground) 14%, transparent);
+    --shadow-float: 0 16px 42px color-mix(in oklab, var(--foreground) 12%, transparent);
+
+    /* Bhargava's Frozen Food sub-brand palette (values scoped under .bhargavas-frozen-food) */
+    --color-sage: var(--sage);
+    --color-sage-light: var(--sage-light);
+    --color-clay: var(--clay);
+    --color-paper: var(--paper);
+    --color-honey: var(--honey);
+    --color-amber: var(--amber);
+    --color-espresso: var(--espresso);
+    --color-whatsapp: var(--whatsapp);
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -57,6 +89,229 @@
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
     --radius-4xl: calc(var(--radius) * 2.6);
+    --animate-slide-in-left: slide-in-left 0.35s ease-out both;
+    --animate-caret-blink: caret-blink 1s steps(1) infinite;
+}
+
+@keyframes slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes caret-blink {
+    0%,
+    49% {
+        opacity: 1;
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Our Promises — scroll-triggered quality flow (source → customer) */
+.promises-flow {
+    --promise-base: 0.15s;
+    --promise-step: 0.5s;
+}
+
+.promise-arrow-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 5px;
+    width: 5px;
+    border-radius: 9999px;
+    background: var(--brand-gold);
+    box-shadow: 0 0 6px 1px rgba(201, 168, 92, 0.6);
+    opacity: 0;
+    transform: translate(-50%, -50%) translateX(-11px) scale(0.6);
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    /* Each card brightens and sharpens as the pulse reaches it, then settles */
+    .promises-flow[data-animate='true'] .promise-card {
+        animation: promise-card-glow 1.1s ease-out;
+        animation-delay: calc(var(--promise-base) + var(--i) * var(--promise-step));
+    }
+
+    .promises-flow[data-animate='true'] .promise-card[data-final='true'] {
+        animation:
+            promise-card-glow 1.1s ease-out,
+            promise-final-glow 1.2s ease-out;
+        animation-delay:
+            calc(var(--promise-base) + var(--i) * var(--promise-step)),
+            calc(var(--promise-base) + var(--i) * var(--promise-step) + 0.75s);
+    }
+
+    /* Every icon gently illuminates when its step activates */
+    .promises-flow[data-animate='true'] .promise-icon {
+        animation: promise-illuminate 0.6s ease-out;
+        animation-delay: calc(var(--promise-base) + var(--i) * var(--promise-step));
+    }
+
+    /* Step-specific icon motion layered over the glow */
+    .promises-flow[data-animate='true'] .promise-icon[data-motion='drive'] svg {
+        animation: promise-drive 0.6s ease-in-out;
+        animation-delay: calc(var(--promise-base) + var(--i) * var(--promise-step));
+    }
+
+    .promises-flow[data-animate='true'] .promise-icon[data-motion='draw'] svg {
+        animation: promise-draw 0.65s ease-out;
+        animation-delay: calc(var(--promise-base) + var(--i) * var(--promise-step));
+    }
+
+    .promises-flow[data-animate='true'] .promise-icon[data-motion='activate'] svg {
+        animation: promise-activate 0.55s ease-out;
+        animation-delay: calc(var(--promise-base) + var(--i) * var(--promise-step));
+    }
+
+    .promises-flow[data-animate='true'] .promise-icon[data-motion='rotate'] svg {
+        animation: promise-rotate 0.7s ease-in-out;
+        animation-delay: calc(var(--promise-base) + var(--i) * var(--promise-step));
+    }
+
+    /* Connecting arrow brightens, a golden dot travels toward the next step */
+    .promises-flow[data-animate='true'] .promise-arrow {
+        animation: promise-arrow-glow 0.5s ease-in-out;
+        animation-delay: calc(var(--promise-base) + var(--i) * var(--promise-step) + 0.3s);
+    }
+
+    .promises-flow[data-animate='true'] .promise-arrow-dot {
+        animation: promise-arrow-dot 0.5s ease-in-out;
+        animation-delay: calc(var(--promise-base) + var(--i) * var(--promise-step) + 0.3s);
+    }
+}
+
+@keyframes promise-illuminate {
+    0% {
+        color: var(--brand-gold);
+        filter: drop-shadow(0 0 0 transparent);
+    }
+    40% {
+        color: #e7cf94;
+        filter: drop-shadow(0 0 6px rgba(201, 168, 92, 0.55));
+    }
+    100% {
+        color: var(--brand-gold);
+        filter: drop-shadow(0 0 0 transparent);
+    }
+}
+
+@keyframes promise-drive {
+    0% {
+        transform: translateX(0);
+    }
+    30% {
+        transform: translateX(-2px);
+    }
+    70% {
+        transform: translateX(3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes promise-draw {
+    0% {
+        clip-path: inset(0 100% 0 0);
+        opacity: 0.4;
+    }
+    100% {
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+    }
+}
+
+@keyframes promise-activate {
+    0% {
+        transform: scale(1);
+    }
+    45% {
+        transform: scale(1.14);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes promise-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes promise-card-glow {
+    0% {
+        box-shadow: 0 0 0 0 transparent;
+        border-color: rgba(201, 168, 92, 0.15);
+        background-color: rgba(63, 74, 45, 0.2);
+    }
+    40% {
+        box-shadow: 0 8px 30px -8px rgba(201, 168, 92, 0.28);
+        border-color: rgba(201, 168, 92, 0.5);
+        background-color: rgba(63, 74, 45, 0.34);
+    }
+    100% {
+        box-shadow: 0 0 0 0 transparent;
+        border-color: rgba(201, 168, 92, 0.15);
+        background-color: rgba(63, 74, 45, 0.2);
+    }
+}
+
+@keyframes promise-final-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(201, 168, 92, 0);
+    }
+    50% {
+        box-shadow: 0 0 34px -6px rgba(201, 168, 92, 0.32);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(201, 168, 92, 0);
+    }
+}
+
+@keyframes promise-arrow-glow {
+    0% {
+        color: rgba(201, 168, 92, 0.3);
+        filter: drop-shadow(0 0 0 transparent);
+    }
+    50% {
+        color: rgba(201, 168, 92, 0.95);
+        filter: drop-shadow(0 0 5px rgba(201, 168, 92, 0.5));
+    }
+    100% {
+        color: rgba(201, 168, 92, 0.3);
+        filter: drop-shadow(0 0 0 transparent);
+    }
+}
+
+@keyframes promise-arrow-dot {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateX(-11px) scale(0.6);
+    }
+    25% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateX(11px) scale(0.6);
+    }
 }
 
 :root {
@@ -146,5 +401,456 @@
     }
   html {
     @apply font-sans;
+    }
+}
+
+/* ============================================================
+   Samosa King sub-brand — scoped theme + animations.
+   Every colour value lives under .samosa-king, so the parent
+   Bhargava's Venture theme and fonts are never affected.
+   ============================================================ */
+.samosa-king {
+    --radius: 1rem;
+
+    /* Samosa King brand — light "yellow & white" theme from the logo
+       (amber #F6B93B accents + white, dark-brown #3D2B12 text) */
+    --ink: #3d2b12;
+    --crust: #e29a2b;
+    --gold: #f6b93b;
+    --cream: #3d2b12; /* headings read dark on the light background */
+    --chutney: oklch(0.55 0.13 145);
+
+    --background: #fffaf0; /* warm white */
+    --foreground: #3d2b12; /* dark brown text */
+    --card: #ffffff; /* white cards */
+    --card-foreground: #3d2b12;
+    --popover: #ffffff;
+    --popover-foreground: #3d2b12;
+    --primary: #c07512; /* readable goldenrod for accent text (eyebrows, prices) */
+    --primary-foreground: #3d2b12; /* dark text on amber button fills */
+    --secondary: #fcefd6;
+    --secondary-foreground: #3d2b12;
+    --muted: #fcefd6;
+    --muted-foreground: #7a6540; /* readable warm brown for body copy */
+    --accent: #c07512;
+    --accent-foreground: #ffffff;
+    --destructive: oklch(0.6 0.22 27);
+    --destructive-foreground: oklch(0.98 0.01 84);
+    --border: #ecd9b3;
+    --input: #ecd9b3;
+    --ring: #f6b93b;
+
+    --gradient-crust: linear-gradient(135deg, #c77e14, #f0a824);
+    --gradient-fry: radial-gradient(
+        ellipse at 50% 0%,
+        color-mix(in oklab, var(--gold) 30%, transparent),
+        transparent 72%
+    );
+    --shadow-glow: 0 20px 60px -20px color-mix(in oklab, var(--gold) 60%, transparent);
+    --shadow-card: 0 18px 40px -22px oklch(0 0 0 / 0.12);
+
+    font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+.samosa-king :is(h1, h2, h3, h4) {
+    font-family: 'Baloo Bhaijaan 2', system-ui, sans-serif;
+    letter-spacing: -0.01em;
+}
+
+@keyframes steam-rise {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scaleX(1);
+    }
+    25% {
+        opacity: 0.55;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-120px) scaleX(1.8);
+    }
+}
+
+@keyframes bob {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+    50% {
+        transform: translateY(-16px) rotate(1deg);
+    }
+}
+
+@keyframes float-spice {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0) rotate(0deg);
+    }
+    20% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(var(--drift, 30px), -220px, 0) rotate(360deg);
+    }
+}
+
+@keyframes shimmer {
+    0%,
+    100% {
+        filter: drop-shadow(0 0 0 transparent);
+    }
+    50% {
+        filter: drop-shadow(0 0 18px color-mix(in oklab, var(--gold) 70%, transparent));
+    }
+}
+
+@keyframes spin-slow {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@utility animate-bob {
+    animation: bob 4s ease-in-out infinite;
+}
+@utility animate-steam {
+    animation: steam-rise 4.5s ease-out infinite;
+}
+@utility animate-spice {
+    animation: float-spice 9s linear infinite;
+}
+@utility animate-shimmer {
+    animation: shimmer 3.5s ease-in-out infinite;
+}
+@utility animate-spin-slow {
+    animation: spin-slow 26s linear infinite;
+}
+@utility animate-marquee {
+    animation: marquee 26s linear infinite;
+}
+
+@utility text-gradient-gold {
+    background-image: var(--gradient-crust);
+    background-clip: text;
+    color: transparent;
+}
+
+@utility reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition:
+        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility reveal-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .samosa-king *,
+    .samosa-king *::before,
+    .samosa-king *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+/* ============================================================
+   Andey Ki Duniya sub-brand — scoped light "eggshell & yolk"
+   theme + egg animations. Values live under .andey-ki-duniya
+   so the parent Bhargava's Venture theme is never affected.
+   ============================================================ */
+.andey-ki-duniya {
+    --radius: 0.625rem;
+
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.129 0.042 264.695);
+    --border: oklch(0.929 0.013 255.508);
+    --input: oklch(0.929 0.013 255.508);
+    --ring: oklch(0.704 0.04 256.788);
+
+    --brand: oklch(0.84 0.18 89);
+    --brand-strong: oklch(0.78 0.18 81);
+    --brand-foreground: oklch(0.18 0.03 68);
+    --ink: oklch(0.18 0.02 62);
+    --ink-foreground: oklch(0.98 0.01 86);
+    --eggshell: oklch(0.98 0.018 86);
+    --yolk-soft: oklch(0.94 0.09 91);
+
+    font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+.andey-ki-duniya :is(h1, h2, h3, h4) {
+    font-family: 'Baloo 2', 'DM Sans', system-ui, sans-serif;
+}
+
+@keyframes egg-bob {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(-14px) rotate(2deg);
+    }
+}
+
+@keyframes egg-shadow {
+    0%,
+    100% {
+        transform: scaleX(1);
+        opacity: 0.22;
+    }
+    50% {
+        transform: scaleX(0.82);
+        opacity: 0.12;
+    }
+}
+
+@keyframes yolk-drift {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(8px, -8px);
+    }
+}
+
+@utility egg-bob {
+    animation: egg-bob 3.8s ease-in-out infinite;
+}
+@utility egg-shadow {
+    animation: egg-shadow 3.8s ease-in-out infinite;
+}
+@utility yolk-drift {
+    animation: yolk-drift 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .andey-ki-duniya .egg-bob,
+    .andey-ki-duniya .egg-shadow,
+    .andey-ki-duniya .yolk-drift,
+    .andey-ki-duniya .animate-fade-in {
+        animation: none !important;
+    }
+}
+
+/* ============================================================
+   Doodhwala sub-brand — scoped light "dairy" theme (green
+   primary + warm accent) + reveal animations. Values live
+   under .doodhwala so the parent theme is never affected.
+   ============================================================ */
+.doodhwala {
+    --radius: 0.625rem;
+    --background: oklch(0.985 0.009 91);
+    --foreground: oklch(0.205 0.012 120);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.205 0.012 120);
+    --primary: oklch(0.35 0.071 126);
+    --primary-foreground: oklch(0.985 0.009 91);
+    --secondary: oklch(0.955 0.013 93);
+    --secondary-foreground: oklch(0.205 0.012 120);
+    --muted: oklch(0.955 0.013 93);
+    --muted-foreground: oklch(0.52 0.022 103);
+    --accent: oklch(0.57 0.137 54);
+    --accent-foreground: oklch(0.985 0.009 91);
+    --accent-soft: oklch(0.955 0.032 66);
+    --border: oklch(0.89 0.016 91);
+    --input: oklch(0.89 0.016 91);
+    --ring: oklch(0.48 0.09 123);
+
+    --font-heading: 'Outfit', system-ui, sans-serif;
+    font-family: 'Figtree', system-ui, sans-serif;
+}
+
+.doodhwala :is(h1, h2, h3, h4) {
+    font-family: 'Outfit', system-ui, sans-serif;
+}
+
+@keyframes reveal-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@utility animate-reveal {
+    animation: reveal-up 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@utility animate-reveal-delayed {
+    animation: reveal-up 0.9s 0.18s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@utility section-kicker {
+    margin-bottom: 1rem;
+    font-size: 0.72rem;
+    line-height: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+}
+
+@utility section-title {
+    max-width: 42rem;
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    line-height: 1.1;
+    font-weight: 600;
+    @media (min-width: 768px) {
+        font-size: 3rem;
+    }
+}
+
+@utility fact-tile {
+    display: flex;
+    min-height: 8.5rem;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    background: var(--secondary);
+    padding: 1.25rem;
+}
+
+@utility investment-card {
+    min-height: 30rem;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--foreground) 6%, transparent);
+    transition:
+        transform 300ms ease,
+        box-shadow 300ms ease;
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-float);
+    }
+    @media (min-width: 768px) {
+        padding: 3rem;
+    }
+}
+
+@utility module-tag {
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--primary) 8%, transparent);
+    padding: 0.4rem 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--primary);
+}
+
+@utility module-tag-dark {
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--primary-foreground) 10%, transparent);
+    padding: 0.4rem 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: color-mix(in oklab, var(--primary-foreground) 75%, transparent);
+}
+
+@utility support-item {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .doodhwala .animate-reveal,
+    .doodhwala .animate-reveal-delayed {
+        animation: none !important;
+    }
+}
+
+/* ============================================================
+   Bhargava's Frozen Food sub-brand — scoped "Heritage Ledger"
+   theme (warm paper background, olive-sage ink, terracotta
+   clay accent). All values live under .bhargavas-frozen-food
+   so the parent Bhargava's Venture theme and fonts are never
+   affected. Fonts: Cormorant Garamond (display), Lora (body),
+   JetBrains Mono (mono) — loaded via index.html.
+   ============================================================ */
+.bhargavas-frozen-food {
+    --radius: 0.25rem;
+    --paper: oklch(0.98 0.009 95);
+    --background: oklch(0.98 0.009 95);
+    --foreground: oklch(0.28 0.025 120);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.28 0.025 120);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.28 0.025 120);
+    --sage: oklch(0.45 0.05 125);
+    --sage-light: oklch(0.93 0.015 125);
+    --clay: oklch(0.52 0.12 40);
+    --primary: oklch(0.45 0.05 125);
+    --primary-foreground: oklch(0.98 0.009 95);
+    --secondary: oklch(0.93 0.015 125);
+    --secondary-foreground: oklch(0.28 0.025 120);
+    --muted: oklch(0.93 0.015 125);
+    --muted-foreground: oklch(0.48 0.03 125);
+    --accent: oklch(0.93 0.015 125);
+    --accent-foreground: oklch(0.28 0.025 120);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.28 0.025 120 / 0.12);
+    --input: oklch(0.28 0.025 120 / 0.12);
+    --ring: oklch(0.45 0.05 125);
+    --honey: oklch(0.94 0.07 95);
+    --amber: oklch(0.72 0.14 70);
+    --espresso: oklch(0.22 0.02 85);
+    --whatsapp: oklch(0.72 0.19 150);
+
+    font-family: 'Lora', Georgia, serif;
+}
+
+/* Font utilities re-pointed inside the wrapper (the parent maps
+   --font-display to Baloo 2, so scope the frozen-food fonts by
+   a higher-specificity descendant rule rather than the token). */
+.bhargavas-frozen-food .font-display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+}
+.bhargavas-frozen-food .font-body {
+    font-family: 'Lora', Georgia, serif;
+}
+.bhargavas-frozen-food .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@utility fade-up {
+    animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bhargavas-frozen-food .fade-up {
+        animation: none !important;
     }
 }

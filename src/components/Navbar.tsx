@@ -21,7 +21,7 @@ import { cn } from '@/lib/utils'
 
 const brands = [
   { name: 'Andey Ki Duniya', slug: 'andey-ki-duniya' },
-  { name: 'Cafe Cochin', slug: 'cafe-cochin' },
+  { name: 'Bhargav Frozen', slug: 'bhargavas-frozen-food' },
   { name: 'Doodhwala', slug: 'doodhwala' },
   { name: 'Paneerwala', slug: 'paneerwala' },
   { name: 'Samosa King', slug: 'samosa-king' },
@@ -31,8 +31,9 @@ const navLinks = [
   { label: 'About Us', href: '/about' },
   { label: 'Franchise', href: '/franchise' },
   { label: 'Our Presence', href: '/our-presence' },
-  { label: 'Contact', href: '/contact' },
 ]
+
+const whatsappHref = 'https://wa.me/918305010777'
 
 function navLinkClassName({ isActive }: { isActive: boolean }) {
   return cn(
@@ -95,6 +96,15 @@ export default function Navbar() {
               {link.label}
             </NavLink>
           ))}
+
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+            className="relative py-2 text-sm text-brand-ivory-muted transition-colors hover:text-brand-gold"
+          >
+            Contact
+          </a>
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
@@ -174,6 +184,14 @@ export default function Navbar() {
                   {link.label}
                 </SheetClose>
               ))}
+
+              <SheetClose
+                render={<a href={whatsappHref} target="_blank" rel="noreferrer" />}
+                nativeButton={false}
+                className="rounded-md px-2 py-2.5 text-sm text-brand-ivory-muted hover:bg-brand-ivory/10"
+              >
+                Contact
+              </SheetClose>
             </nav>
 
             <div className="mt-auto flex items-center gap-2 p-4">

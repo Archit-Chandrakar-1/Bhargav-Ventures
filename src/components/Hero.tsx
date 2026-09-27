@@ -73,7 +73,7 @@ export default function Hero() {
 
         <div className="relative z-10 w-full px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">
-            <div className="max-w-xl">
+            <div className="max-w-[16rem] sm:max-w-xl">
               <div className="mb-5 flex items-center gap-3">
                 <span className="h-px w-6 bg-brand-gold" />
                 <span className="text-xs tracking-[0.2em] text-brand-gold uppercase">
