@@ -2,7 +2,7 @@ const marqueeItems = [
   "Bhargava's",
   'Paneer Wala',
   'Samosa King',
-  'Gwala',
+  'Gwaala',
 ]
 const marqueeRow = [...marqueeItems, ...marqueeItems]
 

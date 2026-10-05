@@ -71,7 +71,7 @@ export default function About() {
               </p>
               <p>
                 Our experience predates the company&apos;s current brand family. We were the
-                previous owners of <strong className="font-semibold text-brand-ivory">Gwala</strong>
+                previous owners of <strong className="font-semibold text-brand-ivory">Gwaala</strong>
                 , and what we learned building that name is now poured into every outlet we open.
               </p>
             </div>
@@ -182,17 +182,17 @@ export default function About() {
           </p>
           <div className="mt-10 grid items-center gap-12 md:grid-cols-12">
             <h2 className="font-heading text-[clamp(3rem,9vw,7rem)] leading-none font-semibold md:col-span-5">
-              Gwala
+              Gwaala
             </h2>
             <div className="space-y-6 text-base leading-relaxed text-brand-ivory-muted md:col-span-7">
               <p>
                 Before the current brand family, there was{' '}
-                <strong className="font-semibold text-brand-ivory">Gwala</strong> — a name we
+                <strong className="font-semibold text-brand-ivory">Gwaala</strong> — a name we
                 owned, built and ran ourselves. It taught us how a food brand earns trust outlet
                 by outlet, and how the FOCO model keeps that trust intact as it grows.
               </p>
               <p>
-                We have since passed Gwala on and turned everything we learned into Bhargava
+                We have since passed Gwaala on and turned everything we learned into Bhargava
                 Venture: a company built specifically to give investors a genuinely hands-off way
                 to own a food franchise.
               </p>

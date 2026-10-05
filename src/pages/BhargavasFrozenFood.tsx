@@ -1,26 +1,12 @@
-import {
-  Armchair,
-  Expand,
-  Mail,
-  MessageCircle,
-  MonitorSmartphone,
-  Paintbrush,
-  Phone,
-  Store,
-  WandSparkles,
-} from 'lucide-react'
+import { Mail, MessageCircle, Phone } from 'lucide-react'
 import { FrozenFoodHero } from '@/pages/bhargavas-frozen-food/FrozenFoodHero'
-
-const kioskImg = '/assets/bhargavas-frozen-food/kiosk.jpg'
-const executiveImg = '/assets/bhargavas-frozen-food/executive.jpg'
 
 export default function BhargavasFrozenFood() {
   return (
     <main className="bhargavas-frozen-food min-h-screen overflow-x-hidden bg-background font-body text-foreground selection:bg-sage/10">
       <FrozenFoodHero />
       <FocoStrip />
-      <FranchiseTiers />
-      <Essentials />
+      <ProductCatalog />
       <Enquiry />
     </main>
   )
@@ -54,179 +40,111 @@ function FocoStrip() {
   )
 }
 
-const tiers = [
-  {
-    type: 'Type A',
-    name: 'Kiosk Model',
-    price: '₹11 Lakhs',
-    image: kioskImg,
-    imageAlt: 'Kiosk model storefront with olive green paneling and display counter',
-    rows: [
-      { label: 'Floor Area', value: '200 – 260 SQFT' },
-      { label: 'Structural Work', value: 'MS Work & Tiles' },
-      { label: 'Branding', value: 'Full Branding & Interior' },
-      { label: 'Operations', value: 'Software & Team Provided' },
-    ],
-    featured: false,
-  },
-  {
-    type: 'Type B',
-    name: 'Executive Model',
-    price: '₹15 Lakhs',
-    image: executiveImg,
-    imageAlt: 'Executive model interior with 15 to 20 seats and botanical decor',
-    rows: [
-      { label: 'Floor Area', value: '500 SQFT' },
-      { label: 'Capacity', value: '15 – 20 Seating' },
-      { label: 'Premium Build', value: 'ACP, MS Work, Furniture' },
-      { label: 'Operations', value: 'Software, Tiles & Interior' },
-    ],
-    featured: true,
-  },
-]
-
-function FranchiseTiers() {
-  return (
-    <section className="mx-auto max-w-6xl px-6 py-32">
-      <div className="mb-20 text-center">
-        <h2 className="mb-4 font-display text-4xl">Franchise Tiers</h2>
-        <div className="mx-auto h-px w-24 bg-clay/30" />
-      </div>
-
-      <div className="grid items-stretch gap-8 md:grid-cols-2">
-        {tiers.map((tier) => (
-          <article
-            key={tier.name}
-            className={`group relative flex flex-col rounded-sm p-8 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-sage/10 md:p-12 ${
-              tier.featured ? 'border border-sage/20 bg-sage-light' : 'border border-border'
-            }`}
-          >
-            {tier.featured && (
-              <div className="absolute right-0 top-0 p-4">
-                <span className="rounded-full bg-clay px-3 py-1 font-mono text-[9px] uppercase tracking-widest text-primary-foreground">
-                  Recommended
-                </span>
-              </div>
-            )}
-            <div className="mb-8">
-              <span className="mb-2 block font-mono text-[10px] tracking-widest text-sage">
-                {tier.type}
-              </span>
-              <h3 className="mb-1 font-display text-3xl">{tier.name}</h3>
-              <p className="font-mono text-2xl text-clay">{tier.price}</p>
-            </div>
-
-            <div className="mb-12 flex-grow space-y-6">
-              <img
-                src={tier.image}
-                alt={tier.imageAlt}
-                loading="lazy"
-                width={944}
-                height={704}
-                className="aspect-[4/3] w-full rounded border border-black/5 object-cover outline-1 -outline-offset-1"
-              />
-              <ul>
-                {tier.rows.map((row) => (
-                  <li
-                    key={row.label}
-                    className={`flex justify-between gap-4 py-2 text-sm ${
-                      tier.featured ? 'border-b border-sage/20' : 'border-b border-border/60'
-                    }`}
-                  >
-                    <span className="text-sage/70">{row.label}</span>
-                    <span className="text-right">{row.value}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <a
-              href="#enquiry"
-              className={`w-full py-4 text-center font-mono text-xs uppercase tracking-[0.2em] transition-all ${
-                tier.featured
-                  ? 'bg-sage text-primary-foreground hover:bg-clay'
-                  : 'border border-sage text-sage hover:bg-sage hover:text-primary-foreground'
-              }`}
-            >
-              Enquire about {tier.name}
-            </a>
-          </article>
-        ))}
-      </div>
-    </section>
-  )
+interface Product {
+  name: string
+  image: string
+  variety?: string
+  packaging: string
+  weight?: string
 }
 
-const essentials = [
+const products: Product[] = [
   {
-    icon: Store,
-    title: 'Interior works',
-    detail: 'Included in both franchise formats',
+    name: 'Mini Samosa',
+    image: '/assets/bhargavas-frozen-food/products/mini-samosa.jpg',
+    variety: 'Potato · Paneer · Cheese Corn · Chocolate · Khowa',
+    packaging: '20 pieces per pack',
+    weight: 'Aloo: 40g per piece · Others: 60g per piece',
   },
   {
-    icon: Expand,
-    title: '200–260 / 500 sq ft',
-    detail: 'Kiosk / Executive floor area',
+    name: 'Cutlet',
+    image: '/assets/bhargavas-frozen-food/products/cutlet.jpg',
+    variety: 'Veg · Paneer · Cheese Corn',
+    packaging: '20 pieces per pack',
+    weight: '50g per piece',
   },
   {
-    icon: Armchair,
-    title: '15–20 seats',
-    detail: 'Executive model seating capacity',
+    name: 'Paratha',
+    image: '/assets/bhargavas-frozen-food/products/paratha.jpg',
+    variety: 'Aloo · Mix · Paneer',
+    packaging: '4 pieces per pack',
+    weight: '250g per piece',
   },
   {
-    icon: MonitorSmartphone,
-    title: 'Software',
-    detail: 'Included in both franchise formats',
+    name: 'Aloo Tikki',
+    image: '/assets/bhargavas-frozen-food/products/aloo-tikki.jpg',
+    packaging: '8 pieces per pack',
+    weight: '150g per piece (cashew stuffing) · 100g per piece',
   },
   {
-    icon: WandSparkles,
-    title: 'MS work & tiles',
-    detail: 'Included in both franchise formats',
+    name: 'Burger Tikki',
+    image: '/assets/bhargavas-frozen-food/products/burger-tikki.jpg',
+    packaging: '20 pieces per pack',
+    weight: '70g per piece',
   },
   {
-    icon: Paintbrush,
-    title: 'Format-specific extras',
-    detail: 'Kiosk: branding & team · Executive: ACP & furniture',
+    name: 'Paneer Cheese Ball',
+    image: '/assets/bhargavas-frozen-food/products/paneer-cheese-ball.jpg',
+    variety: 'Stuffing: Cheese, Paneer',
+    packaging: '1 kg and 500g packs',
+  },
+  {
+    name: 'Veg Momos',
+    image: '/assets/bhargavas-frozen-food/products/veg-momos.jpg',
+    variety: 'Available fresh & frozen',
+    packaging: '20 pcs and 40 pcs packs',
+  },
+  {
+    name: 'Moong Vada',
+    image: '/assets/bhargavas-frozen-food/products/moong-vada.jpg',
+    variety: 'Ingredients: Moong Dal & Onion',
+    packaging: '1 kg and 500g packs',
   },
 ]
 
-function Essentials() {
+function ProductCatalog() {
   return (
-    <section
-      className="border-t border-border bg-paper px-6 py-24"
-      aria-labelledby="essentials-heading"
-    >
+    <section className="border-t border-border bg-paper px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-12 max-w-xl">
+        <div className="mb-16 max-w-xl">
           <span className="mb-4 block font-mono text-[10px] uppercase tracking-widest text-clay">
-            Built into the package
+            Our Range
           </span>
-          <h2
-            id="essentials-heading"
-            className="font-display text-4xl font-semibold leading-tight md:text-5xl"
-          >
-            The essentials, already on the list.
+          <h2 className="font-display text-4xl italic leading-tight md:text-5xl">
+            Frozen, ready, always on hand.
           </h2>
         </div>
-        <div className="grid grid-cols-1 border-l border-t border-border sm:grid-cols-2 lg:grid-cols-3">
-          {essentials.map(({ icon: Icon, title, detail }, index) => (
-            <div
-              key={title}
-              className="flex min-h-48 flex-col border-b border-r border-border px-7 py-7 transition-colors hover:bg-sage-light/40 md:min-h-52 md:px-8"
+
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
+          {products.map((product) => (
+            <article
+              key={product.name}
+              className="group flex flex-col overflow-hidden rounded-sm border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-sage/10 sm:flex-row"
             >
-              <div className="flex items-start justify-between">
-                <Icon className="size-6 text-clay" strokeWidth={1.8} aria-hidden="true" />
-                <span className="font-mono text-[10px] text-muted-foreground">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
+              <img
+                src={product.image}
+                alt={product.name}
+                loading="lazy"
+                className="aspect-4/3 w-full object-cover sm:aspect-auto sm:h-auto sm:w-3/5 sm:self-stretch"
+              />
+              <div className="flex flex-1 flex-col gap-3 p-6 sm:p-7">
+                <h3 className="font-display text-2xl">{product.name}</h3>
+                {product.variety && (
+                  <p className="text-sm leading-relaxed text-muted-foreground">{product.variety}</p>
+                )}
+                <div className="mt-auto space-y-1 border-t border-border/60 pt-3 text-sm text-sage/80">
+                  <p>{product.packaging}</p>
+                  {product.weight && <p>{product.weight}</p>}
+                </div>
               </div>
-              <div className="mt-auto pt-8">
-                <h3 className="font-display text-2xl font-semibold leading-tight">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{detail}</p>
-              </div>
-            </div>
+            </article>
           ))}
         </div>
+
+        <p className="mt-10 font-mono text-[10px] tracking-wide text-muted-foreground">
+          Keep frozen at −7°C · Use before 150 days from packaging date · Strict hygiene,
+          consistent taste, uncompromised quality in every batch.
+        </p>
       </div>
     </section>
   )

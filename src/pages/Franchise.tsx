@@ -80,14 +80,14 @@ export default function Franchise() {
               <div className="mt-6 space-y-5 text-base leading-relaxed text-brand-ivory-muted">
                 <p>
                   Long before Bhargava Venture existed, our team was in the dairy trade — building
-                  and running <strong className="font-semibold text-brand-ivory">Gwala</strong>, a
+                  and running <strong className="font-semibold text-brand-ivory">Gwaala</strong>, a
                   doorstep milk brand, outlet by outlet, route by route. What we learned there stayed
                   with us: the people with the sharpest instinct for food are rarely the people
                   equipped to handle licensing, staffing, supply chains and daily discipline.
                 </p>
                 <p>
                   We started Bhargava Venture to close that gap — a partner invests in an outlet, and
-                  we run it, the same way we once ran Gwala's routes ourselves.
+                  we run it, the same way we once ran Gwaala's routes ourselves.
                 </p>
               </div>
               <a
