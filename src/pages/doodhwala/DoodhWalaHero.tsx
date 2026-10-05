@@ -2,7 +2,7 @@ import { ArrowDown } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '@/pages/doodhwala/Button'
 
-const outletImage = '/assets/doodhwala/doodhwala-outlet.jpg'
+const outletImage = '/assets/Doodhwala-Main.png'
 
 const scrollTo = (id: string) => {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -20,9 +20,9 @@ export function DoodhWalaHero({ mode = 'page' }: { mode?: 'page' | 'preview' }) 
   const onSecondary = preview ? () => navigate('/brands/doodhwala') : () => scrollTo('support')
 
   return (
-    <section id="top" className="relative px-5 pt-12 pb-20 sm:px-8 md:pt-16 md:pb-28">
-      <div className="pointer-events-none absolute top-28 left-[8%] h-28 w-px bg-gradient-to-b from-transparent via-primary/20 to-transparent" />
-      <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[minmax(0,1fr)_450px]">
+    <section id="top" className="relative px-5 pt-8 pb-12 sm:px-8 sm:pt-12 sm:pb-16 md:pt-16 md:pb-28">
+      <div className="pointer-events-none absolute top-20 left-[8%] h-20 w-px bg-gradient-to-b from-transparent via-primary/20 to-transparent sm:top-28 sm:h-28" />
+      <div className="mx-auto flex max-w-7xl flex-col-reverse gap-8 sm:gap-14 lg:grid lg:grid-cols-[minmax(0,1fr)_560px] lg:items-center">
         <div className="animate-reveal">
           <p className="mb-7 flex items-center gap-3 text-xs font-semibold tracking-[0.18em] text-primary uppercase">
             <span className="h-px w-8 bg-accent" /> A Bhargava Ventures franchise
@@ -70,9 +70,9 @@ export function DoodhWalaHero({ mode = 'page' }: { mode?: 'page' | 'preview' }) 
             <img
               src={outletImage}
               alt="Concept for a modern Doodh Wala dairy retail outlet"
-              width={912}
-              height={1200}
-              className="aspect-[3/4] w-full object-cover"
+              width={1309}
+              height={1201}
+              className="aspect-auto h-64 w-full object-cover sm:h-96 lg:h-[600px]"
             />
           </div>
           <div className="absolute -bottom-7 left-4 rounded-lg border border-border bg-background p-5 shadow-float sm:-left-7 sm:p-6">

@@ -80,20 +80,10 @@ const brands: Brand[] = [
     slug: 'paneerwala',
     logo: '/assets/Paneerwala.png',
     tagline: 'Fresh, rich and wholesome',
-    cardClassName: 'bg-[#B5502E]',
-    taglineClassName: 'text-[#FBEAE0]',
+    cardClassName: 'bg-white',
+    taglineClassName: 'text-[#6E2F16]',
     buttonClassName: 'bg-[#6E2F16] text-[#FBEAE0] hover:bg-[#6E2F16]/90',
     quote: "From farm to your family's frying pan — redefining the original, pure paneerwala for the digital home.",
-  },
-  {
-    name: 'Coffee Roasters',
-    slug: 'chai-zindagi',
-    tagline: 'Warmth in every sip',
-    cardClassName: 'bg-[#8B5A2B]',
-    taglineClassName: 'text-[#FDF3E7]',
-    buttonClassName: 'bg-[#4A2E14] text-[#FDF3E7] hover:bg-[#4A2E14]/90',
-    quote:
-      'Legend says coffee was discovered when a herder saw his goats dance after tasting the berries — we roast that same spark into every cup.',
   },
   {
     name: "Bhargava's Frozen Food",
@@ -140,7 +130,7 @@ export default function OurBrands() {
           <TypingHeading />
         </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {brands.map((brand, index) => {
             const isActive = Boolean(brand.quote) && index === activeBrandIndex
             return (

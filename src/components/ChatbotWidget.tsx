@@ -1,6 +1,7 @@
 import { Bot, MessageCircle, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { WhatsAppIcon } from '@/components/icons/whatsapp-icon'
+import { modelsByBrand } from '@/components/EnquiryModal'
 import { cn } from '@/lib/utils'
 
 const whatsappNumber = '918305010777'
@@ -8,9 +9,9 @@ const whatsappNumber = '918305010777'
 const franchiseBrands = [
   { name: 'Samosa King', slug: 'samosa-king' },
   { name: 'Andey Ki Duniya', slug: 'andey-ki-duniya' },
-  { name: 'Cafe Cochin', slug: 'cafe-cochin' },
   { name: 'Doodhwala', slug: 'doodhwala' },
   { name: 'Paneerwala', slug: 'paneerwala' },
+  { name: "Bhargava's Frozen Food", slug: 'bhargavas-frozen-food' },
 ]
 
 type Message = {
@@ -19,10 +20,11 @@ type Message = {
   text: string
 }
 
-type Stage = 'thinking' | 'intro' | 'brand-picker' | 'browsing' | 'brand-selected'
+type Stage = 'thinking' | 'intro' | 'brand-picker' | 'model-picker' | 'browsing' | 'brand-selected'
 
-function whatsappLinkFor(brandName: string) {
-  const text = `Hi, I'm interested in the franchise of ${brandName}.`
+function whatsappLinkFor(brandName: string, modelName: string | null) {
+  const modelPart = modelName ? ` (${modelName})` : ''
+  const text = `Hi, I'm interested in the franchise of ${brandName}${modelPart}.`
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`
 }
 
@@ -52,6 +54,7 @@ export default function ChatbotWidget() {
   const [stage, setStage] = useState<Stage>('thinking')
   const [typing, setTyping] = useState(false)
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null)
+  const [selectedModel, setSelectedModel] = useState<string | null>(null)
   const [messages, setMessages] = useState<Message[]>([])
   const messageIdRef = useRef(1)
   const hasGreetedRef = useRef(false)
@@ -112,15 +115,43 @@ export default function ChatbotWidget() {
   function handleBrandPick(brandName: string) {
     pushMessage('user', brandName)
     setSelectedBrand(brandName)
+    setSelectedModel(null)
+    setStage('thinking')
+
+    const models = modelsByBrand[brandName] ?? []
+    if (models.length > 1) {
+      sendBotMessage(
+        `Great choice! ${brandName} has ${models.length} franchise models. Which one interests you?`,
+        'model-picker',
+      )
+    } else if (models.length === 1) {
+      const m = models[0]
+      setSelectedModel(m.name)
+      sendBotMessage(
+        `Great choice! ${brandName}'s franchise model is ${m.name} — ${m.range} (${m.size}). Let's connect you with our franchise team on WhatsApp — they'll walk you through investment and next steps.`,
+        'brand-selected',
+      )
+    } else {
+      sendBotMessage(
+        `Great choice! ${brandName} is one of our most loved brands. Let's connect you with our franchise team on WhatsApp — they'll walk you through investment and next steps.`,
+        'brand-selected',
+      )
+    }
+  }
+
+  function handleModelPick(modelName: string) {
+    pushMessage('user', modelName)
+    setSelectedModel(modelName)
     setStage('thinking')
     sendBotMessage(
-      `Great choice! ${brandName} is one of our most loved brands. Let's connect you with our franchise team on WhatsApp — they'll walk you through investment and next steps.`,
+      "Perfect! Let's connect you with our franchise team on WhatsApp — they'll walk you through investment and next steps.",
       'brand-selected',
     )
   }
 
   function handleChooseDifferentBrand() {
     pushMessage('user', 'Choose a different brand')
+    setSelectedModel(null)
     setStage('thinking')
     sendBotMessage('Sure! Which one would you like instead?', 'brand-picker')
   }
@@ -203,6 +234,16 @@ export default function ChatbotWidget() {
               </div>
             )}
 
+            {stage === 'model-picker' && selectedBrand && (
+              <div className="flex flex-col gap-2 pt-1">
+                {(modelsByBrand[selectedBrand] ?? []).map((model, index) => (
+                  <OptionButton key={model.name} index={index} onClick={() => handleModelPick(model.name)}>
+                    {model.name} — {model.range}
+                  </OptionButton>
+                ))}
+              </div>
+            )}
+
             {stage === 'browsing' && (
               <div className="flex flex-col gap-2 pt-1">
                 <OptionButton index={0} onClick={handleWantsFranchise}>
@@ -214,7 +255,7 @@ export default function ChatbotWidget() {
             {stage === 'brand-selected' && selectedBrand && (
               <div className="flex flex-col items-start gap-2 pt-1">
                 <a
-                  href={whatsappLinkFor(selectedBrand)}
+                  href={whatsappLinkFor(selectedBrand, selectedModel)}
                   target="_blank"
                   rel="noreferrer"
                   style={{ animationDelay: '0ms' }}

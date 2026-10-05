@@ -21,8 +21,8 @@ export function Hero({ mode = 'page' }: { mode?: 'page' | 'preview' }) {
 
   return (
     <header
-      className={`relative isolate flex flex-col overflow-hidden px-5 pb-10 ${
-        preview ? 'pt-12' : 'min-h-[100svh] pt-24'
+      className={`relative isolate flex flex-col overflow-hidden px-5 ${
+        preview ? 'pt-8 pb-8 sm:pt-12 sm:pb-10' : 'min-h-[100svh] pt-24 pb-10'
       }`}
     >
       <div
@@ -32,7 +32,7 @@ export function Hero({ mode = 'page' }: { mode?: 'page' | 'preview' }) {
       />
       <Spices />
 
-      <div className="mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <div className="mx-auto grid w-full max-w-7xl flex-1 items-center gap-6 sm:gap-10 lg:grid-cols-2 lg:gap-16">
         {/* Left: brand logo */}
         <div className="flex justify-center lg:justify-start">
           <div className="relative">
@@ -48,7 +48,7 @@ export function Hero({ mode = 'page' }: { mode?: 'page' | 'preview' }) {
             <img
               src={logo}
               alt="Samosa King logo"
-              className="animate-bob relative w-52 drop-shadow-2xl sm:w-72 lg:w-[30rem]"
+              className="animate-bob relative w-40 drop-shadow-2xl sm:w-52 lg:w-72 2xl:w-[30rem]"
               style={{ transform: `translateY(${y * -0.05}px)` }}
             />
           </div>
@@ -60,14 +60,24 @@ export function Hero({ mode = 'page' }: { mode?: 'page' | 'preview' }) {
             Est. on the street · Hot since forever
           </p>
 
-          <h1 className="animate-shimmer mt-4 text-6xl leading-[0.9] font-extrabold sm:text-7xl lg:text-8xl">
+          <h1 className="animate-shimmer mt-4 text-7xl leading-[0.9] font-extrabold sm:text-8xl lg:text-9xl uppercase">
             <span className="block text-cream">Samosa</span>
             <span className="text-gradient-gold block">King</span>
           </h1>
 
-          <p className="mt-6 max-w-md text-base text-muted-foreground sm:text-lg">
-            Hand-folded, fresh-fried, dangerously crunchy. The crown belongs to the triangle.
-          </p>
+          {preview ? (
+            <div className="mt-6 max-w-md text-base sm:text-lg">
+              <p className="font-bold text-cream uppercase">Make samosas your business.</p>
+              <p className="mt-2 text-muted-foreground">
+                A loved product. A ready brand. A franchise opportunity built to grow.
+              </p>
+              <p className="mt-2 font-bold text-cream">Could your city be next?</p>
+            </div>
+          ) : (
+            <p className="mt-6 max-w-md text-base text-muted-foreground sm:text-lg">
+              Hand-folded, fresh-fried, dangerously crunchy. The crown belongs to the triangle.
+            </p>
+          )}
 
           {preview ? (
             <Link
@@ -116,6 +126,7 @@ export function Hero({ mode = 'page' }: { mode?: 'page' | 'preview' }) {
           ))}
         </div>
       </div>
+
     </header>
   )
 }

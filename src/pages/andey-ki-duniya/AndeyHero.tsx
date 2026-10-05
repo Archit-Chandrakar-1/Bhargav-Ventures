@@ -8,7 +8,7 @@ const btnBase =
 
 function EggCharacter() {
   return (
-    <div className="relative mx-auto h-80 w-64 sm:h-96 sm:w-80" aria-hidden="true">
+    <div className="relative mx-auto h-56 w-48 sm:h-80 lg:h-96 lg:w-80" aria-hidden="true">
       <div className="yolk-drift absolute top-9 right-1 h-16 w-16 rounded-full bg-brand/30" />
       <div className="egg-bob absolute inset-x-5 top-0 h-[85%] rounded-[50%_50%_46%_46%/58%_58%_42%_42%] border border-brand/25 bg-eggshell shadow-2xl">
         <div className="absolute top-[43%] left-[26%] h-3 w-3 rounded-full bg-ink" />
@@ -34,10 +34,10 @@ export function AndeyHero({ mode = 'page' }: { mode?: 'page' | 'preview' }) {
   const secondaryBtn = `${btnBase} h-12 border border-ink/20 bg-transparent px-6 text-base hover:bg-yolk-soft`
 
   return (
-    <section className="relative isolate border-b border-ink/10 px-5 pt-10 pb-12 sm:px-8 lg:px-12 lg:pt-14 lg:pb-16">
-      <div className="absolute top-20 -left-16 -z-10 h-56 w-56 rounded-full border-[36px] border-brand/15" />
-      <div className="absolute -right-10 bottom-10 -z-10 h-36 w-36 rounded-full bg-yolk-soft" />
-      <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+    <section className="relative isolate border-b border-ink/10 px-5 pt-8 pb-8 sm:px-8 sm:pt-10 sm:pb-12 lg:px-12 lg:pt-14 lg:pb-16">
+      <div className="absolute top-12 -left-12 -z-10 h-40 w-40 rounded-full border-[24px] border-brand/15 sm:top-20 sm:-left-16 sm:h-56 sm:w-56 sm:border-[36px]" />
+      <div className="absolute -right-6 bottom-6 -z-10 h-24 w-24 rounded-full bg-yolk-soft sm:-right-10 sm:bottom-10 sm:h-36 sm:w-36" />
+      <div className="mx-auto grid max-w-7xl items-center gap-6 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="animate-fade-in max-w-3xl">
           <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-ink/15 bg-background/70 px-4 py-2 text-xs font-bold tracking-widest uppercase">
             <span className="size-2 rounded-full bg-brand" />

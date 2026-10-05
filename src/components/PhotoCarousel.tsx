@@ -1,9 +1,11 @@
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { EnquiryButton } from '@/components/EnquiryModal'
 import { AndeyHero } from '@/pages/andey-ki-duniya/AndeyHero'
 import { FrozenFoodHero } from '@/pages/bhargavas-frozen-food/FrozenFoodHero'
 import { DoodhWalaHero } from '@/pages/doodhwala/DoodhWalaHero'
+import { PaneerWalaHero } from '@/pages/paneerwala/PaneerWalaHero'
 import { Hero as SamosaHero } from '@/pages/samosa-king/Hero'
 
 interface BrandSlide {
@@ -17,7 +19,7 @@ interface BrandSlide {
   /** Set only for brands that have a live page. */
   to?: string
   /** Renders the brand's own hero section instead of the simple card. */
-  custom?: 'andey' | 'samosa' | 'doodhwala' | 'frozen'
+  custom?: 'andey' | 'samosa' | 'doodhwala' | 'frozen' | 'paneerwala'
 }
 
 const slides: BrandSlide[] = [
@@ -51,17 +53,11 @@ const slides: BrandSlide[] = [
   {
     name: 'Paneerwala',
     tagline: 'Fresh, rich and wholesome',
-    logo: '/assets/Paneerwala.png',
-    cardClassName: 'bg-[#B5502E]',
-    textClassName: 'text-[#FBEAE0]',
-    buttonClassName: 'bg-[#6E2F16] text-[#FBEAE0] hover:bg-[#6E2F16]/90',
-  },
-  {
-    name: 'Coffee Roasters',
-    tagline: 'Warmth in every sip',
-    cardClassName: 'bg-[#8B5A2B]',
-    textClassName: 'text-[#FDF3E7]',
-    buttonClassName: 'bg-[#4A2E14] text-[#FDF3E7] hover:bg-[#4A2E14]/90',
+    cardClassName: 'bg-background',
+    textClassName: 'text-foreground',
+    buttonClassName: '',
+    to: '/brands/paneerwala',
+    custom: 'paneerwala',
   },
   {
     name: "Bhargava's Frozen Food",
@@ -129,6 +125,15 @@ export default function PhotoCarousel() {
                 <FrozenFoodHero mode="preview" />
               </div>
             </div>
+          ) : slide.custom === 'paneerwala' ? (
+            <div
+              key={slide.name}
+              className="paneerwala flex w-full shrink-0 items-center bg-background text-foreground"
+            >
+              <div className="w-full">
+                <PaneerWalaHero mode="preview" />
+              </div>
+            </div>
           ) : (
           <div
             key={slide.name}
@@ -186,6 +191,8 @@ export default function PhotoCarousel() {
       >
         <ChevronRight className="h-5 w-5" />
       </button>
+
+      <EnquiryButton className="absolute bottom-16 left-1/2 z-10 -translate-x-1/2 text-base font-bold text-brand-gold transition-opacity hover:opacity-80 sm:text-lg" />
 
       <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 gap-2">
         {slides.map((slide, slideIndex) => (

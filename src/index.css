@@ -854,3 +854,60 @@
         animation: none !important;
     }
 }
+
+/* ============================================================
+   Paneerwala sub-brand — scoped light "fresh dairy" theme
+   (terracotta primary, warm cream background, deep olive ink,
+   green accent for the pure-veg mark). All values live under
+   .paneerwala so the parent Bhargava's Venture theme is never
+   affected. Fonts: Baloo 2 (display — already the parent's
+   --font-display, so no override needed) / Mukta (body, loaded
+   via index.html).
+   ============================================================ */
+.paneerwala {
+    --background: oklch(0.975 0.015 85);
+    --foreground: oklch(0.24 0.05 125);
+    --card: oklch(0.995 0.005 85);
+    --card-foreground: oklch(0.24 0.05 125);
+    --popover: oklch(0.995 0.005 85);
+    --popover-foreground: oklch(0.24 0.05 125);
+    --primary: oklch(0.58 0.11 35);
+    --primary-foreground: oklch(0.99 0.005 85);
+    --secondary: oklch(0.26 0.06 125);
+    --secondary-foreground: oklch(0.97 0.015 85);
+    --muted: oklch(0.94 0.02 80);
+    --muted-foreground: oklch(0.45 0.04 110);
+    --accent: oklch(0.6 0.15 150);
+    --accent-foreground: oklch(0.99 0 0);
+    --border: oklch(0.88 0.03 80);
+    --input: oklch(0.88 0.03 80);
+    --ring: oklch(0.58 0.11 35);
+    --shadow-soft: 0 20px 40px -20px color-mix(in oklab, var(--secondary) 35%, transparent);
+
+    font-family: 'Mukta', system-ui, sans-serif;
+}
+
+/* ============================================================
+   About page — scrolling brand-name marquee strip. Uses the
+   parent Bhargava's Venture theme directly (brand-charcoal /
+   brand-ivory / font-heading), no scoped wrapper needed since
+   this is parent content, not a sub-brand.
+   ============================================================ */
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@utility animate-marquee {
+    animation: marquee 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+        animation: none !important;
+    }
+}
