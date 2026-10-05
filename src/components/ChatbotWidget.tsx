@@ -8,9 +8,9 @@ const whatsappNumber = '918305010777'
 
 const franchiseBrands = [
   { name: 'Samosa King', slug: 'samosa-king' },
-  { name: 'Andey Ki Duniya', slug: 'andey-ki-duniya' },
+  // { name: 'Andey Ki Duniya', slug: 'andey-ki-duniya' },
   { name: 'Doodhwala', slug: 'doodhwala' },
-  { name: 'Paneerwala', slug: 'paneerwala' },
+  // { name: 'Paneerwala', slug: 'paneerwala' },
   { name: "Bhargava's Frozen Food", slug: 'bhargavas-frozen-food' },
 ]
 
@@ -98,7 +98,7 @@ export default function ChatbotWidget() {
     pushMessage('user', 'Tell me about franchise opportunities')
     setStage('thinking')
     sendBotMessage(
-      'Awesome! We have 5 brands actively looking for franchise partners right now. Which one catches your eye?',
+      'Awesome! We have 3 brands actively looking for franchise partners right now. Which one catches your eye?',
       'brand-picker',
     )
   }

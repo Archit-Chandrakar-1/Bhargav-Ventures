@@ -59,7 +59,7 @@ export function Hero({ mode = 'page' }: { mode?: 'page' | 'preview' }) {
           src="/assets/Thela.png"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none hidden w-72 shrink-0 drop-shadow-2xl lg:ml-4 lg:block xl:ml-8 xl:w-96 2xl:ml-12 2xl:w-[28rem]"
+          className="pointer-events-none w-64 shrink-0 drop-shadow-2xl sm:w-72 lg:ml-4 lg:w-72 xl:ml-8 xl:w-96 2xl:ml-12 2xl:w-[28rem]"
         />
 
         {/* Right: content */}

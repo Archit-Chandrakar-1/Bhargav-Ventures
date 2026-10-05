@@ -6,9 +6,9 @@ const whatsappNumber = '918305010777'
 
 const brands = [
   'Samosa King',
-  'Andey Ki Duniya',
+  // 'Andey Ki Duniya',
   'Doodhwala',
-  'Paneerwala',
+  // 'Paneerwala',
   "Bhargava's Frozen Food",
   'Not sure yet',
 ]
