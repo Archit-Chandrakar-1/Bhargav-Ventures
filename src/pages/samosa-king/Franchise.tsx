@@ -63,6 +63,7 @@ const models: Model[] = [
       'Furniture',
       '15–20 seating capacity',
       'Deep freezer',
+      'Kitchen Equipments',
     ],
     featured: true,
   },

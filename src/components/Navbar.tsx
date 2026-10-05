@@ -20,10 +20,10 @@ import {
 import { cn } from '@/lib/utils'
 
 const brands = [
-  { name: 'Andey Ki Duniya', slug: 'andey-ki-duniya' },
+  // { name: 'Andey Ki Duniya', slug: 'andey-ki-duniya' },
   { name: 'Bhargav Frozen', slug: 'bhargavas-frozen-food' },
   { name: 'Doodhwala', slug: 'doodhwala' },
-  { name: 'Paneerwala', slug: 'paneerwala' },
+  // { name: 'Paneerwala', slug: 'paneerwala' },
   { name: 'Samosa King', slug: 'samosa-king' },
 ]
 

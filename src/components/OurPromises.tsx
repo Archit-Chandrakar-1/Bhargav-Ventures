@@ -80,20 +80,13 @@ const brandPromises: BrandPromise[] = [
     textClassName: 'text-[#3D2B12]',
     iconSrc: '/assets/samosa-icon.png',
   },
-  {
-    name: 'Andey Ki Duniya',
-    promise: 'Only the best quality eggs make it to our kitchen — fresh, safe, and reliably sourced.',
-    cardClassName: 'bg-[#FFC93C]',
-    textClassName: 'text-[#1A1A1A]',
-    emoji: '🐣',
-  },
-  {
-    name: 'Coffee Roasters',
-    promise: 'Small-batch beans, roasted fresh and ground to order — never a stale or second-rate cup.',
-    cardClassName: 'bg-[#3F4A2D]',
-    textClassName: 'text-[#E4E8D8]',
-    emoji: '☕️',
-  },
+  // {
+  //   name: 'Andey Ki Duniya',
+  //   promise: 'Only the best quality eggs make it to our kitchen — fresh, safe, and reliably sourced.',
+  //   cardClassName: 'bg-[#FFC93C]',
+  //   textClassName: 'text-[#1A1A1A]',
+  //   emoji: '🐣',
+  // },
   {
     name: 'Doodhwala',
     promise: 'Pure, quality milk in every form — cow, buffalo, and tetra pack — with zero compromise on freshness.',
@@ -101,13 +94,13 @@ const brandPromises: BrandPromise[] = [
     textClassName: 'text-[#4A3F2E]',
     emoji: '🥛',
   },
-  {
-    name: 'Paneerwala',
-    promise: 'Real paneer, always. No duplicates, no synthetic shortcuts — just fresh and genuine.',
-    cardClassName: 'bg-[#B5502E]',
-    textClassName: 'text-[#FBEAE0]',
-    emoji: '🧈',
-  },
+  // {
+  //   name: 'Paneerwala',
+  //   promise: 'Real paneer, always. No duplicates, no synthetic shortcuts — just fresh and genuine.',
+  //   cardClassName: 'bg-[#B5502E]',
+  //   textClassName: 'text-[#FBEAE0]',
+  //   emoji: '🧈',
+  // },
   {
     name: "Bhargava's Frozen Food",
     promise: 'Flash-frozen at peak freshness and cold-chain sealed — every pack as good as the day it was made.',
@@ -333,7 +326,7 @@ export default function OurPromises() {
             Each brand carries its own promise — the specific standard it refuses to break.
           </p>
 
-          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6">
+          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {brandPromises.map((brand) => (
               <div
                 key={brand.name}

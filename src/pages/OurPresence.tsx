@@ -18,9 +18,9 @@ const presenceStats = [
 const brands = [
   { name: "Bhargava's", logo: '/assets/Bhargavas.jpg' },
   { name: 'Samosa King', logo: '/assets/SamosaKing.png' },
-  { name: 'Andey Ki Duniya', logo: '/assets/Andeykiduniya.png' },
+  // { name: 'Andey Ki Duniya', logo: '/assets/Andeykiduniya.png' },
   { name: 'Doodhwala', logo: '/assets/Doodhwala.png' },
-  { name: 'Paneerwala', logo: '/assets/Paneerwala.png' },
+  // { name: 'Paneerwala', logo: '/assets/Paneerwala.png' },
 ]
 
 export default function OurPresence() {
@@ -111,13 +111,13 @@ export default function OurPresence() {
           <h2 className="mt-6 max-w-2xl font-heading text-3xl leading-snug font-medium md:text-4xl">
             Every brand we franchise is already proven, right here in Raipur.
           </h2>
-          <div className="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-3">
             {brands.map((brand) => (
               <div
                 key={brand.name}
-                className="flex flex-col items-center gap-4 rounded-xl border border-brand-ivory/10 bg-brand-charcoal p-6"
+                className="flex flex-col items-center gap-5 rounded-xl border border-brand-ivory/10 bg-brand-charcoal p-10"
               >
-                <div className="flex h-20 w-20 items-center justify-center rounded-lg bg-white p-2">
+                <div className="flex h-28 w-28 items-center justify-center rounded-lg bg-white p-2">
                   <img src={brand.logo} alt={`${brand.name} logo`} className="h-full w-full object-contain" />
                 </div>
                 <p className="text-center text-sm font-medium">{brand.name}</p>

@@ -1,10 +1,10 @@
 import { ArrowRight, Heart, ImageIcon, Leaf, Play, Users } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 
 interface HeroContent {
   eyebrow: string
-  headlineLine1: string
   headlineLine2: string
   paragraph: string
   primaryCta: { label: string; href: string }
@@ -15,7 +15,6 @@ interface HeroContent {
 
 const heroContent: HeroContent = {
   eyebrow: 'A family of food brands',
-  headlineLine1: 'Different flavours.',
   headlineLine2: 'One stronger vision.',
   paragraph:
     'Placeholder copy — Bhargava’s Venture builds and grows distinctive food brands across India. Real content to follow.',
@@ -30,6 +29,31 @@ const badges = [
   { icon: Users, label: 'Growing Across India' },
   { icon: Heart, label: 'Loved by Millions' },
 ]
+
+const flipWords = ['flavours.', 'brands.', 'stories.', 'cravings.', 'experiences.', 'journeys.']
+const flipWordIntervalMs = 2200
+
+function FlipHeadline() {
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % flipWords.length)
+    }, flipWordIntervalMs)
+    return () => clearInterval(timer)
+  }, [])
+
+  return (
+    <>
+      Different{' '}
+      <span className="inline-block overflow-hidden align-top" style={{ perspective: '200px' }}>
+        <span key={index} className="animate-flip-word inline-block">
+          {flipWords[index]}
+        </span>
+      </span>
+    </>
+  )
+}
 
 export default function Hero() {
   return (
@@ -82,7 +106,7 @@ export default function Hero() {
               </div>
 
               <h1 className="font-heading text-4xl leading-[1.1] text-brand-ivory sm:text-5xl lg:text-6xl">
-                {heroContent.headlineLine1}
+                <FlipHeadline />
                 <br />
                 <span className="text-brand-olive">{heroContent.headlineLine2}</span>
               </h1>

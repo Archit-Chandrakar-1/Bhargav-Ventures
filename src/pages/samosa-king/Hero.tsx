@@ -22,7 +22,7 @@ export function Hero({ mode = 'page' }: { mode?: 'page' | 'preview' }) {
   return (
     <header
       className={`relative isolate flex flex-col overflow-hidden px-5 ${
-        preview ? 'pt-8 pb-8 sm:pt-12 sm:pb-10' : 'min-h-[100svh] pt-24 pb-10'
+        preview ? 'h-full pt-8 pb-28 sm:pt-12' : 'min-h-[100svh] pt-24 pb-10'
       }`}
     >
       <div
@@ -32,9 +32,9 @@ export function Hero({ mode = 'page' }: { mode?: 'page' | 'preview' }) {
       />
       <Spices />
 
-      <div className="mx-auto grid w-full max-w-7xl flex-1 items-center gap-6 sm:gap-10 lg:grid-cols-2 lg:gap-16">
+      <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col items-center gap-6 sm:gap-10 lg:flex-row lg:items-center lg:gap-6 xl:gap-10">
         {/* Left: brand logo */}
-        <div className="flex justify-center lg:justify-start">
+        <div className="flex shrink-0 justify-center lg:justify-start">
           <div className="relative">
             <div
               aria-hidden
@@ -54,8 +54,16 @@ export function Hero({ mode = 'page' }: { mode?: 'page' | 'preview' }) {
           </div>
         </div>
 
+        {/* Middle: cart illustration */}
+        <img
+          src="/assets/Thela.png"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none hidden w-72 shrink-0 drop-shadow-2xl lg:ml-4 lg:block xl:ml-8 xl:w-96 2xl:ml-12 2xl:w-[28rem]"
+        />
+
         {/* Right: content */}
-        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+        <div className="flex flex-1 flex-col items-center text-center lg:items-start lg:text-left">
           <p className="animate-fade-in text-xs font-semibold tracking-[0.42em] text-primary uppercase">
             Est. on the street · Hot since forever
           </p>
@@ -65,15 +73,7 @@ export function Hero({ mode = 'page' }: { mode?: 'page' | 'preview' }) {
             <span className="text-gradient-gold block">King</span>
           </h1>
 
-          {preview ? (
-            <div className="mt-6 max-w-md text-base sm:text-lg">
-              <p className="font-bold text-cream uppercase">Make samosas your business.</p>
-              <p className="mt-2 text-muted-foreground">
-                A loved product. A ready brand. A franchise opportunity built to grow.
-              </p>
-              <p className="mt-2 font-bold text-cream">Could your city be next?</p>
-            </div>
-          ) : (
+          {!preview && (
             <p className="mt-6 max-w-md text-base text-muted-foreground sm:text-lg">
               Hand-folded, fresh-fried, dangerously crunchy. The crown belongs to the triangle.
             </p>

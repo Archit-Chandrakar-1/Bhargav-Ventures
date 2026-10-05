@@ -1,7 +1,5 @@
 const marqueeItems = [
   "Bhargava's",
-  'Doodhwala',
-  'Ande ki Duniya',
   'Paneer Wala',
   'Samosa King',
   'Gwala',

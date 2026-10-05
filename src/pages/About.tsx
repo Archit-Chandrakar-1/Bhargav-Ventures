@@ -3,18 +3,6 @@ import { AboutHero } from '@/pages/about/AboutHero'
 const brands = [
   { logo: '/assets/Bhargavas.jpg', name: "Bhargava's", tagline: 'The house brand', category: 'Flagship' },
   {
-    logo: '/assets/Doodhwala.png',
-    name: 'Doodhwala',
-    tagline: 'Fresh milk, delivered the old way',
-    category: 'Dairy',
-  },
-  {
-    logo: '/assets/Andeykiduniya.png',
-    name: 'Ande ki Duniya',
-    tagline: 'Everything egg, done right',
-    category: 'Egg specialities',
-  },
-  {
     logo: '/assets/Paneerwala.png',
     name: 'Paneer Wala',
     tagline: 'Pure veg. Fresh paneer, every day',
@@ -49,7 +37,7 @@ const focoSteps = [
 const stats = [
   { value: '10+', label: 'Years of operating experience' },
   { value: 'FOCO', label: 'Franchise Owned, Company Operated' },
-  { value: '5', label: 'Brands in the family today' },
+  { value: '3', label: 'Brands in the family today' },
   { value: '100%', label: 'Outlets run by the company' },
 ]
 

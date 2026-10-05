@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 
-const heading = 'Five Unique Stories. One Bigger Purpose.'
+const heading = 'Three Unique Stories. One Bigger Purpose.'
 const typingSpeedMs = 55
 const pauseAfterTypedMs = 2000
 
@@ -54,37 +54,17 @@ const brands: Brand[] = [
     buttonClassName: 'bg-[#3D2B12] text-[#F6B93B] hover:bg-[#3D2B12]/90',
     quote: 'Since the 11th century, the samosa has been the universal language of food happiness.',
   },
-  {
-    name: 'Andey Ki Duniya',
-    slug: 'andey-ki-duniya',
-    logo: '/assets/Andeykiduniya.png',
-    tagline: 'Eggstraordinary everyday',
-    cardClassName: 'bg-[#4FA8D8]',
-    taglineClassName: 'text-white',
-    buttonClassName: 'bg-[#0B2E44] text-[#EAF6FF] hover:bg-[#0B2E44]/90',
-    logoClassName: 'scale-[1.3]',
-    quote: 'Love and eggs are best when they are fresh.',
-  },
-  {
-    name: 'Doodhwala',
-    slug: 'doodhwala',
-    logo: '/assets/Doodhwala.png',
-    tagline: 'Pure goodness, everyday',
-    cardClassName: 'bg-[#F5F1E4]',
-    taglineClassName: 'text-[#4A3F2E]',
-    buttonClassName: 'bg-[#3F4A2D] text-brand-ivory hover:bg-[#3F4A2D]/90',
-    quote: "Every drop tested, every batch trusted — we are the digital era's doodhwala.",
-  },
-  {
-    name: 'Paneerwala',
-    slug: 'paneerwala',
-    logo: '/assets/Paneerwala.png',
-    tagline: 'Fresh, rich and wholesome',
-    cardClassName: 'bg-white',
-    taglineClassName: 'text-[#6E2F16]',
-    buttonClassName: 'bg-[#6E2F16] text-[#FBEAE0] hover:bg-[#6E2F16]/90',
-    quote: "From farm to your family's frying pan — redefining the original, pure paneerwala for the digital home.",
-  },
+  // {
+  //   name: 'Andey Ki Duniya',
+  //   slug: 'andey-ki-duniya',
+  //   logo: '/assets/Andeykiduniya.png',
+  //   tagline: 'Eggstraordinary everyday',
+  //   cardClassName: 'bg-[#4FA8D8]',
+  //   taglineClassName: 'text-white',
+  //   buttonClassName: 'bg-[#0B2E44] text-[#EAF6FF] hover:bg-[#0B2E44]/90',
+  //   logoClassName: 'scale-[1.3]',
+  //   quote: 'Love and eggs are best when they are fresh.',
+  // },
   {
     name: "Bhargava's Frozen Food",
     slug: 'bhargavas-frozen-food',
@@ -96,6 +76,26 @@ const brands: Brand[] = [
     quote:
       "Flash-frozen at its peak, food can lock in more nutrients than 'fresh' produce days into its journey — freshness, paused in time.",
   },
+  {
+    name: 'Doodhwala',
+    slug: 'doodhwala',
+    logo: '/assets/Doodhwala.png',
+    tagline: 'Pure goodness, everyday',
+    cardClassName: 'bg-[#F5F1E4]',
+    taglineClassName: 'text-[#4A3F2E]',
+    buttonClassName: 'bg-[#3F4A2D] text-brand-ivory hover:bg-[#3F4A2D]/90',
+    quote: "Every drop tested, every batch trusted — we are the digital era's doodhwala.",
+  },
+  // {
+  //   name: 'Paneerwala',
+  //   slug: 'paneerwala',
+  //   logo: '/assets/Paneerwala.png',
+  //   tagline: 'Fresh, rich and wholesome',
+  //   cardClassName: 'bg-white',
+  //   taglineClassName: 'text-[#6E2F16]',
+  //   buttonClassName: 'bg-[#6E2F16] text-[#FBEAE0] hover:bg-[#6E2F16]/90',
+  //   quote: "From farm to your family's frying pan — redefining the original, pure paneerwala for the digital home.",
+  // },
 ]
 
 // Cards that actually carry a quote — the auto-rotation cycles through these.
@@ -130,7 +130,7 @@ export default function OurBrands() {
           <TypingHeading />
         </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {brands.map((brand, index) => {
             const isActive = Boolean(brand.quote) && index === activeBrandIndex
             return (

@@ -13,19 +13,9 @@ const heritageCards = [
     fact: "The samosa travelled to India with Central Asian traders well before the Mughal era — 10th-century Persian court writings already describe a spiced, meat-filled pastry called ‘sambosa’ served to royalty. What began as a traveller's snack on the Silk Road became the subcontinent's favourite street food.",
   },
   {
-    name: 'Andey Ki Duniya',
-    logo: '/assets/Andeykiduniya.png',
-    fact: 'Domesticated hens reached the Indian subcontinent over 3,000 years ago, and the egg has been prized here ever since as one of the few complete proteins available at everyday prices — which is exactly why it still anchors breakfast carts and dinner plates alike.',
-  },
-  {
     name: 'Doodhwala',
     logo: '/assets/Doodhwala.png',
     fact: "Milk is called ‘amrit’ (nectar) in texts over 3,000 years old, and the doodhwala who delivered it door to door at dawn has been a fixture of Indian neighbourhoods for generations — long before refrigeration, trust in your local doodhwala was the only quality guarantee there was.",
-  },
-  {
-    name: 'Paneer Wala',
-    logo: '/assets/Paneerwala.png',
-    fact: 'Paneer entered Indian kitchens with Persian and Central Asian influence around the 16th century, when cooks discovered that curdling milk with acid — without rennet — produced a fresh cheese that suited vegetarian cooking. It remains one of the few cheeses invented specifically to never need ageing.',
   },
   {
     name: "Bhargava's Frozen Food",
@@ -37,7 +27,7 @@ const heritageCards = [
 const storyStats = [
   { value: '10+', label: 'Years building food brands' },
   { value: 'FOCO', label: 'Franchise Owned, Company Operated' },
-  { value: '5', label: 'Brands open to franchise today' },
+  { value: '3', label: 'Brands open to franchise today' },
 ]
 
 export default function Franchise() {

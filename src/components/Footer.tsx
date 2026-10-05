@@ -17,11 +17,12 @@ const quickLinks = [
 ]
 
 const brandLinks = [
+  { label: 'Bhargav Ventures', href: '/' },
   { label: 'Samosa King', href: '/brands/samosa-king' },
-  { label: 'Andey Ki Duniya', href: '/brands/andey-ki-duniya' },
-  { label: 'Cafe Cochin', href: '/brands/cafe-cochin' },
+  // { label: 'Andey Ki Duniya', href: '/brands/andey-ki-duniya' },
+  // { label: 'Cafe Cochin', href: '/brands/cafe-cochin' },
   { label: 'Doodhwala', href: '/brands/doodhwala' },
-  { label: 'Paneerwala', href: '/brands/paneerwala' },
+  // { label: 'Paneerwala', href: '/brands/paneerwala' },
 ]
 
 const legalLinks = [
